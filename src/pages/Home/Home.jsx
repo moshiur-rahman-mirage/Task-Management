@@ -21,7 +21,7 @@ const SectionName = ({ name, color = "", className = "" }) => {
 const Home = () => {
   return (
     <div className=" min-h-screen">
-      <div className="flex flex-cols md:px-5 items-start justify-between bg-white  min-h-full gap-5">
+      <div className="flex flex-cols md:px-5 items-start justify-between bg-white-200  min-h-full gap-5">
         <div className="border-t-4 border-t-primary w-full">
           <SectionName className="" name="Ongoing" color="text-primary" />
           <Taskcard status="ongoing" />

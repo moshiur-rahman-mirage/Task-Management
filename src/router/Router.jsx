@@ -4,6 +4,7 @@ import Home from "../pages/Home/Home";
 import Dashboard from "../pages/Dashboard/Dashboard";
 import Login from "../pages/Login/Login";
 import Mytask from "../pages/Mytask/Mytask";
+import Privateroutes from "./PrivateRoute";
 
 
 const Router = createBrowserRouter([
@@ -17,7 +18,7 @@ const Router = createBrowserRouter([
       },
       {
         path: "/home",
-        element: <Home />,
+        element: <Privateroutes><Home /></Privateroutes>,
       },
       {
         path: "/dashboard",
