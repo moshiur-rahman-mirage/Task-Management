@@ -42,6 +42,7 @@ const Login = () => {
         signInWithGoogle()
             .then(result => {
                 toast.success('Logged In Successfully!');
+                navigate("/");
             })
             .catch(error => {
                 toast.error(error);

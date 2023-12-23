@@ -7,7 +7,7 @@ const SectionName = ({ name, color = "", className = "" }) => {
   return (
     <>
       <div
-        className={`${className} flex  flex-cols md:px-5 md:pt-2 shadow-lg bg-white items-start justify-between`}
+        className={`${className} flex rounded-es-md rounded-ee-md flex-cols md:px-5 md:pt-2 shadow-lg bg-white items-start justify-between`}
       >
         <div>{name}</div>
         <div className={`${color} text-xl`}>

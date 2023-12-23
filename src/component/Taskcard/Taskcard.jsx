@@ -48,7 +48,7 @@ const Taskcard = ({ status }) => {
               </div>
             </>
           ) : (
-            <div className="grid bg-white gap-10 grid-cols-1">
+            <div className="grid  gap-2 grid-cols-1">
               {cardData.map((task) => {
                 return (
                   <>

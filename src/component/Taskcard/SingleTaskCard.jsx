@@ -4,7 +4,7 @@ const SingleTaskCard = ({ task }) => {
   const { task_name,task_description,task_status } = task;
 
   return (
-    <div className="mt-5">
+    <div className="mt-2 rounded-lg bg-white">
       <div className=" rounded-lg overflow-hidden shadow-lg">
         <div className="px-6 py-4">
           <div className="font-bold text-xl mb-2">{task_name}</div>
