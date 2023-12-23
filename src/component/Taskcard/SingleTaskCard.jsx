@@ -1,10 +1,26 @@
+import { useDraggable } from "@dnd-kit/core";
 import React from "react";
 
-const SingleTaskCard = ({ task }) => {
-  const { task_name,task_description,task_status } = task;
+const SingleTaskCard = ({ task,onDragStart }) => {
+
+  
+  const { task_name,task_description,task_status,_id } = task;
+ 
+  const {attributes, listeners, setNodeRef, transform} = useDraggable({
+    id: _id,
+    onDragStart: () => onDragStart(task),
+  });
+  const style = transform ? {
+    transform: `translate3d(${transform.x}px, ${transform.y}px, 0)`,
+  } : undefined;
 
   return (
-    <div className="mt-2 rounded-lg bg-white">
+    <div className="mt-2 rounded-lg bg-white" 
+    ref={setNodeRef} 
+    style={style} 
+    {...listeners} 
+    {...attributes}>
+
       <div className=" rounded-lg overflow-hidden shadow-lg">
         <div className="px-6 py-4">
           <div className="font-bold text-xl mb-2">{task_name}</div>

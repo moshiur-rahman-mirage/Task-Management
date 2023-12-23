@@ -29,14 +29,14 @@ const AuthProvider = ({ children }) => {
 
     const signInUser = (email, password) => {
         setLoading(true);
-        console.log('Here')
+        // console.log('Here')
         return signInWithEmailAndPassword(auth, email, password);
     }
 
 
     const signInWithGoogle = async () => {
         setLoading(true);
-        console.log("google signin");
+        // console.log("google signin");
         return await signInWithPopup(auth, googleProvider);
     }
 

@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import { FiPlusCircle } from "react-icons/fi";
 import { FaCirclePlus } from "react-icons/fa6";
 import Taskcard from "../../component/Taskcard/Taskcard";
+import TaskAdd from "../../component/TaskAdd";
 
 const SectionName = ({ name, color = "", className = "" }) => {
   return (
@@ -19,21 +20,45 @@ const SectionName = ({ name, color = "", className = "" }) => {
 };
 
 const Home = () => {
+
+
+  const [tasks, setTasks] = useState([
+    { _id: 1, task_name: "Task 1", task_status: "ongoing" },
+    { _id: 2, task_name: "Task 2", task_status: "hold" },
+    { _id: 3, task_name: "Task 3", task_status: "completed" },
+  ]);
+
+  const handleDropTask = (task, newStatus) => {
+    console.log('c')
+    const updatedTasks = tasks.map((t) =>
+      t._id === task._id ? { ...t, task_status: newStatus } : t
+    );
+
+    setTasks(updatedTasks);
+  };
+
+
+
   return (
     <div className=" min-h-screen">
-      <div className="flex flex-cols md:px-5 items-start justify-between bg-white-200  min-h-full gap-5">
+      <div className="grid grid-cols-4 md:px-5 items-start justify-between bg-white-200  min-h-full gap-5">
         <div className="border-t-4 border-t-primary w-full">
           <SectionName className="" name="Ongoing" color="text-primary" />
-          <Taskcard status="ongoing" />
+          <Taskcard status="ongoing" onDropTask={handleDropTask} />
         </div>
         <div className=" border-t-4 border-t-secondary w-full">
           <SectionName className="" name="Hold" color="text-secondary" />
-          <Taskcard status="hold" />
+          <Taskcard status="hold" onDropTask={handleDropTask} />
         </div>
         <div className="w-full border-t-4 border-t-pink ">
           <SectionName className="" name="Completed" color="text-pink" />
-          <Taskcard status="completed" />
+          <Taskcard status="completed" onDropTask={handleDropTask} />
         </div>
+        <div className="w-full border-t-4 border-t-primary ">
+          <SectionName className="" name="Add New Task" color="text-pink" />
+          <TaskAdd/>
+        </div>
+        
       </div>
     </div>
   );

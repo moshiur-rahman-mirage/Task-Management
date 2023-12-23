@@ -26,7 +26,7 @@ const Login = () => {
                 
             })
             .catch(error => {
-                console.log(error)
+                // console.log(error)
                 if(error.code === 'auth/wrong-password'){
                     toast.error('Please check the Password');
                   }
