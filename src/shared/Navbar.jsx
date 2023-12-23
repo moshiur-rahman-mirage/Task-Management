@@ -24,18 +24,20 @@ const MenuButton = ({ item, className = "" }) => {
     <>
       <motion.div
         variants={divVariants}
-        whileHover="hover"
+        whileHover={{ backgroundColor: "#EBE2F6" ,borderRadius: "10px" }}
         whileTap="rest"
         style={{
           position: "relative",
           boxSizing: "border-box",
-          margin: 0,
-          padding: 0,
+          margin: "5px",
+          // border:"2px solid green",
+          padding: "5px",
+          //boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)"
         }}
         initial="rest"
       >
         <NavLink
-          className={`${className} md:mx-10 mx-2 md:text-xl text-xs text-left uppercase`}
+          className={`${className} rounded-lg gap-4 md:mx-5 text-dark md:text-xl text-xs text-left uppercase`}
           to={`${item}`}
         >
           {item}
@@ -57,7 +59,7 @@ const Navbar = () => {
         setScrolling(false);
       }
     };
-   
+
     window.addEventListener("scroll", handleScroll);
 
     return () => {
@@ -66,28 +68,48 @@ const Navbar = () => {
   }, []);
 
   const isHomePage = location.pathname === "/" || location.pathname === "/Home";
-  
+
   const handleSignOut = () => {
     logout().then().catch();
   };
   return (
     <motion.div
-      className="navbar px-10 fixed z-10"
+      className="navbar px-10"
       initial={{ backgroundColor: "#303956" }}
       animate={{
         // backgroundColor: scrolling ? '#303031' : 'transparent' ,
         backgroundColor: scrolling
-          ? "#303031"
+          ? "#FFFFFF"
           : isHomePage
-          ? "#303956"
-          : "#303031",
+          ? "#FFFFFF"
+          : "#FFFFFF",
         color: scrolling ? "#fff" : "#fff",
       }}
       transition={{ duration: 0.5 }}
     >
       <div className="navbar-start">
+      <MenuButton className="text-md uppercase hidden lg:flex " item="Task Management"></MenuButton>
+        <div className="hidden md:flex">
+       
+          <ul className="menu menu-horizontal w-full px-1">
+            {navitems.map((item) => {
+              return (
+                <MenuButton
+                  className="uppercase md:text-md text-sm "
+                  key={item}
+                  item={item}
+                />
+              );
+            })}
+          </ul>
+        </div>
+
         <div className="dropdown">
-          <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
+          <div
+            tabIndex={0}
+            role="button"
+            className="btn btn-ghost lg:hidden text-dark"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-5 w-5"
@@ -105,7 +127,7 @@ const Navbar = () => {
           </div>
           <ul
             tabIndex={0}
-            className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-[#303956] rounded-box w-52"
+            className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-light rounded-box w-52"
           >
             {navitems.map((item) => {
               return (
@@ -117,11 +139,11 @@ const Navbar = () => {
               );
             })}
           </ul>
-        </div>
 
-        <MenuButton className="text-xl uppercase" item="Tasker"></MenuButton>
+        </div>
+        <MenuButton className="text-xl uppercase lg:hidden" item="Tasker"></MenuButton>
       </div>
-      <div className="navbar-center hidden lg:flex">
+      {/* <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal w-full px-1">
           {navitems.map((item) => {
             return (
@@ -133,7 +155,7 @@ const Navbar = () => {
             );
           })}
         </ul>
-      </div>
+      </div> */}
       <div className="navbar-end">
         {user ? (
           <div className="dropdown dropdown-end ">
@@ -143,10 +165,7 @@ const Navbar = () => {
               className="btn btn-ghost btn-circle avatar"
             >
               <div className="w-10 rounded-full">
-                <img
-                  alt="Tailwind CSS Navbar component"
-                  src={user.photoURL}
-                />
+                <img alt="Tailwind CSS Navbar component" src={user.photoURL} />
               </div>
             </div>
             <ul
@@ -157,10 +176,7 @@ const Navbar = () => {
                 <a>Settings</a>
               </li>
               <li>
-                <button
-                  onClick={handleSignOut}
-                  className=" text-white"
-                >
+                <button onClick={handleSignOut} className=" text-white">
                   Logout
                 </button>
               </li>
