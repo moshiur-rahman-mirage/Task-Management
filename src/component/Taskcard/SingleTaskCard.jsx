@@ -1,7 +1,7 @@
 import { useDraggable } from "@dnd-kit/core";
 import React from "react";
 
-const SingleTaskCard = ({ task,onDragStart }) => {
+const SingleTaskCard = ({ color, task,onDragStart }) => {
 
   
   const { task_name,task_description,task_status,_id } = task;
@@ -21,7 +21,8 @@ const SingleTaskCard = ({ task,onDragStart }) => {
     {...listeners} 
     {...attributes}>
 
-      <div className=" rounded-lg overflow-hidden shadow-lg">
+      <div className={`rounded-lg overflow-hidden shadow-lg`} >
+      {/* ${color}  */}
         <div className="px-6 py-4">
           <div className="font-bold text-xl mb-2">{task_name}</div>
           <p className="text-gray-700 text-base">

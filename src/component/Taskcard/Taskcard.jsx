@@ -6,7 +6,7 @@ import SingleTaskCard from "./SingleTaskCard";
 import { DndContext, useDroppable } from "@dnd-kit/core";
 
 
-const Taskcard = ({ status,onDropTask }) => {
+const Taskcard = ({ status,onDropTask,color }) => {
   const { user, logout } = useContext(AuthContext);
   const [loading, setLoading] = useState(true);
   const axiosPublic = useAxiosPublic();
@@ -85,7 +85,7 @@ const Taskcard = ({ status,onDropTask }) => {
             onDrop={() => handleDrop()}
           >
             {cardData.map((task) => (
-              <SingleTaskCard key={task._id} task={task} onDragStart={(task) => handleDragStart(task)} />
+              <SingleTaskCard key={task._id} color={color} task={task} onDragStart={(task) => handleDragStart(task)} />
             ))}
           </div>
         </DndContext>

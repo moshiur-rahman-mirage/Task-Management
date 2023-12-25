@@ -30,9 +30,7 @@ const MenuButton = ({ item, className = "" }) => {
           position: "relative",
           boxSizing: "border-box",
           margin: "5px",
-          // border:"2px solid green",
           padding: "5px",
-          //boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)"
         }}
         initial="rest"
       >
@@ -67,7 +65,7 @@ const Navbar = () => {
     };
   }, []);
 
-  const isHomePage = location.pathname === "/" || location.pathname === "/Home";
+  const isHomePage = location.pathname === "/" || location.pathname === "/Home" || location.pathname === "/TASK MANAGEMENT";
 
   const handleSignOut = () => {
     logout().then().catch();
@@ -146,19 +144,7 @@ const Navbar = () => {
           item="Tasker"
         ></MenuButton>
       </div>
-      {/* <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal w-full px-1">
-          {navitems.map((item) => {
-            return (
-              <MenuButton
-                className="uppercase md:text-2xl text-sm "
-                key={item}
-                item={item}
-              />
-            );
-          })}
-        </ul>
-      </div> */}
+
       <div className="navbar-end">
         {user ? (
           <div className="dropdown dropdown-end ">

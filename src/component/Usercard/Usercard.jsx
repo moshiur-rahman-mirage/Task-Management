@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 const Usercard = ({  user_type,user_img,color }) => {
 
   return (
-    <motion.div className=" listing border bg-white relative cursor-pointer w-[25%] max-w-sm min-w-[300px] m-5 shadow-slate-500  rounded-xl overflow-hidden" whileHover={{ scale: 1.01 }}>
+    <motion.div className=" mx-auto listing border bg-white relative cursor-pointer w-[25%] max-w-sm min-w-[300px] m-5 shadow-slate-500  rounded-xl overflow-hidden" whileHover={{ scale: 1.01 }}>
       <div  className="absolute left-0 top-0 w-full h-full bg-white rounded-lg overflow-hidden">
         <div className="w-full h-[85%] overflow-hidden ">
           <img

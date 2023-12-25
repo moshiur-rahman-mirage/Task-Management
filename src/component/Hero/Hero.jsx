@@ -7,9 +7,9 @@ import AnimatedText from "../AnimatedText/AnimatedText";
 import { NavLink } from "react-router-dom";
 const Hero = () => {
   return (
-    <div className="carousel w-full min-h-screen ">
+    <div className="carousel w-full md:min-h-screen min-h-80 ">
       <div id="slide1" className="carousel-item relative w-full">
-        <img src={banner1} className="w-full h-screen" />
+        <img src={banner1} className="w-full md:h-screen min-h-80 " />
         <div
           className="absolute  pl-12   flex items-center transform left-0 top-0 h-full gap-2  bg-gradient-to-r from-[#151515] to-[rgba(21, 21, 21, 0.00)]);
 
