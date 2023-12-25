@@ -7,6 +7,8 @@ import Mytask from "../pages/Mytask/Mytask";
 import Privateroutes from "./PrivateRoute";
 import Home from "../pages/Home/Home";
 import Signup from "../pages/Signup/Signup";
+import Contacts from "../pages/Contacts/Contacts";
+import About from "../pages/About/About";
 
 
 const Router = createBrowserRouter([
@@ -25,6 +27,14 @@ const Router = createBrowserRouter([
       {
         path: "/home",
         element: <Home />,
+      },
+      {
+        path: "/About",
+        element: <About />,
+      },
+      {
+        path: "/Contact",
+        element: <Contacts />,
       },
       {
         path: "/dashboard",

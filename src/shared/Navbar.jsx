@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { Link, NavLink, useLocation, useNavigation } from "react-router-dom";
 import { motion } from "framer-motion";
 import { AuthContext } from "../providers/Authprovider";
-const navitems = ["Home"];
+const navitems = ["Home", "About", "Contact"];
 
 const divVariants = {
   rest: {

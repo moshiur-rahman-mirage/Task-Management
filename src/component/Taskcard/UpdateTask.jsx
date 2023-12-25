@@ -1,71 +1,66 @@
-import React, { useContext, useEffect, useState } from "react";
-import { useForm } from "react-hook-form";
-import { AuthContext } from "../providers/Authprovider";
-import Swal from "sweetalert2";
-import useAxiosSecure from "../hook/useAxiosSecure";
+import { useEffect, useState } from 'react';
+import Swal from 'sweetalert2';
 
-const TaskAdd = () => {
-  const { user } = useContext(AuthContext);
-  const axiosSecure = useAxiosSecure();
-  const { register, handleSubmit, reset } = useForm();
-  const [loading, setLoading] = useState(false);
+const UpdateTask = ({ task }) => {
+    const { _id } = task
 
-  // const fetchDataAfterSubmit = async () => {
-  //     try {
-  //       const response = await axiosSecure.get('/tasks'); // Assuming this is the endpoint to fetch tasks
-  //       // Process the fetched data as needed
-  //       console.log('Fetched tasks:', response.data);
-  //     } catch (error) {
-  //       console.error('Error fetching tasks:', error);
-  //     }
-  //   };
 
-  const onSubmit = async (data) => {
-    const Task = {
-      task_name: data.Task_name,
-      task_description: data.Task_description,
-      task_deadline:data.deadline,
-      task_priority:data.priority,
-      task_status: "ongoing",
-      email: user?.email,
-    };
 
-    const Task_res = await axiosSecure.post("/tasks", Task);
-    // console.log(Task_res)
-    if (Task_res.data._id) {
-      Swal.fire({
-        position: "top-end",
-        icon: "success",
-        title: `${data.Task_name} is added as Task.`,
-        showConfirmButton: false,
-        timer: 1500,
-      });
-      reset();
-      setLoading(true);
-    } else {
-      console.log("not uploaded");
+    const handleUpdate = (presentId, task) => {
+        console.log(item)
+        fetch(`https://b8a10-brandshop-server-side-moshiur-rahman-mirage.vercel.app/products/${_id}`, {
+            method: 'PUT',
+            headers: {
+                'content-type': 'application/json',
+            },
+            body: JSON.stringify(item)
+
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.modifiedCount > 0) {
+
+                    Swal.fire({
+                        title: 'Success',
+                        text: 'Data updated Successfully!',
+                        icon: 'success'
+                    })
+
+                }
+            })
     }
 
-    // console.log('with image url', res.data);
-  };
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axiosSecure.get("/tasks"); // Assuming this is the endpoint to fetch tasks
-        // Process the fetched data as needed
-        console.log("Fetched tasks:", response.data);
-      } catch (error) {
-        console.error("Error fetching tasks:", error);
-      }
-    };
+    const onSubmit = async (data) => {
+        const Task = {
+          task_name: data.Task_name,
+          task_description: data.Task_description,
+          task_deadline:data.deadline,
+          task_priority:data.priority,
+          task_status: "ongoing",
+          email: user?.email,
+        };
+    
+        const Task_res = await axiosSecure.put("/tasks", Task);
+        if (Task_res.data._id) {
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: `${data.Task_name} is added as Task.`,
+            showConfirmButton: false,
+            timer: 1500,
+          });
+          reset();
+          setLoading(true);
+        } else {
+          console.log("not uploaded");
+        }
+      };
 
-    fetchData(); // Trigger the fetch operation after the component mounts or task submission
-  }, [loading, axiosSecure]);
-
-  return (
-    <div className="md:pt-2">
-      <form
+    return (
+        <div>
+            <div className='py-5 font-bold'>Product Form</div>
+            <form
         onSubmit={handleSubmit(onSubmit)}
         className="  w-full md:max-w-lg"
       >
@@ -143,8 +138,8 @@ const TaskAdd = () => {
           </button>
         </div>
       </form>
-    </div>
-  );
+        </div>
+    );
 };
 
-export default TaskAdd;
+export default UpdateTask;

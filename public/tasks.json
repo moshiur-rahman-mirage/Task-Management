@@ -5,69 +5,69 @@
       "task_description": "Create wireframes and design the user interface for the application.",
       "email": "moshiur.mirage@gmail.com",
       "task_status": "ongoing"
-    },
+    ,"task_priority":"Medium"},
     {
       
       "task_name": "Implement Authentication",
       "task_description": "Set up user authentication and authorization mechanisms.",
       "email":  "moshiur.mirage@gmail.com",
       "task_status": "ongoing"
-    },
+    ,"task_priority":"Medium"},
     {
       
       "task_name": "Database Schema Design",
       "task_description": "Define the database schema and relationships for optimal data storage.",
       "email":  "moshiur.mirage@gmail.com",
       "task_status": "completed"
-    },
+    ,"task_priority":"Medium"},
     {
      
       "task_name": "Backend Development",
       "task_description": "Build the backend logic and APIs to support the application functionality.",
       "email":  "moshiur.mirage@gmail.com",
-      "task_status": "hold"
-    },
+      "task_status": "todo"
+    ,"task_priority":"Medium"},
     {
       
       "task_name": "Frontend Implementation",
       "task_description": "Code the frontend components and integrate them with the backend.",
       "email":  "moshiur.mirage@gmail.com",
       "task_status": "ongoing"
-    },
+    ,"task_priority":"Medium"},
     {
      
       "task_name": "Testing and QA",
       "task_description": "Perform comprehensive testing to identify and fix any issues.",
       "email":  "moshiur.mirage@gmail.com",
       "task_status": "ongoing"
-    },
+    ,"task_priority":"Medium"},
     {
       
       "task_name": "Deployment to Production",
       "task_description": "Deploy the application to the production environment for public access.",
       "email":  "moshiur.mirage@gmail.com",
       "task_status": "completed"
-    },
+    ,"task_priority":"Medium"},
     {
       
       "task_name": "User Feedback Collection",
       "task_description": "Gather user feedback and make improvements based on suggestions.",
       "email":  "moshiur.mirage@gmail.com",
       "task_status": "ongoing"
-    },
+    ,"task_priority":"Medium"},
     {
      
       "task_name": "Documentation",
       "task_description": "Create documentation for users and developers to understand the system.",
       "email":  "moshiur.mirage@gmail.com",
       "task_status": "completed"
-    },
+    ,"task_priority":"Medium"},
     {
       
       "task_name": "Project Presentation",
-      "task_description": "Prepare a presentation to showcase the completed project to stakeholders.",
+      "task_description": "Prepare a presentation to showcase the completed project to staketodoers.",
       "email":  "moshiur.mirage@gmail.com",
-      "task_status": "hold"
-    }
+      "task_status": "todo"
+    ,"task_priority":"Medium"}
   ]
   
