@@ -79,7 +79,7 @@ const Taskcard = ({ status,onDropTask,color }) => {
       ) : (
         <DndContext onDragEnd={handleDragEnd}>
           <div
-            className="grid border gap-2 grid-cols-1"
+            className="grid gap-2 grid-cols-1"
             ref={setNodeRef}
             style={style}
             onDrop={() => handleDrop()}

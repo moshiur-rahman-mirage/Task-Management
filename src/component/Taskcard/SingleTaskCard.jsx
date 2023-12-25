@@ -3,12 +3,12 @@ import React, { useState } from "react";
 import Modal from "react-responsive-modal";
 import { NavLink } from "react-router-dom";
 import UpdateTask from "./UpdateTask";
-import 'react-responsive-modal/styles.css';
+import "react-responsive-modal/styles.css";
 const SingleTaskCard = ({ color, task, onDragStart }) => {
   const [open, setOpen] = useState(false);
   const onOpenModal = () => setOpen(true);
   const onCloseModal = () => setOpen(false);
-console.log(open)
+  console.log(open);
   const { task_name, task_description, task_status, _id, task_priority } = task;
 
   const { attributes, listeners, setNodeRef, transform } = useDraggable({
@@ -21,41 +21,30 @@ console.log(open)
       }
     : undefined;
 
-
-
-    const handleDelete = (_id) => {
-      Swal.fire({
-          title: "Are you sure?",
-          text: "You won't be able to revert this!",
-          icon: "warning",
-          showCancelButton: true,
-          confirmButtonColor: "#3085d6",
-          cancelButtonColor: "#d33",
-          confirmButtonText: "Yes, delete it!"
-      }).then((result) => {
-          if (result.isConfirmed) {
-
-              axiosSecure.delete(`/task/${id}`)
-                  .then(res => {
-                      if (res.data.deletedCount > 0) {
-                          refetch();
-                          Swal.fire({
-                              title: "Deleted!",
-                              // text: `${name} has been deleted.`,
-                              icon: "success"
-                          });
-                      }
-                  })
+  const handleDelete = (_id) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axiosSecure.delete(`/task/${id}`).then((res) => {
+          if (res.data.deletedCount > 0) {
+            refetch();
+            Swal.fire({
+              title: "Deleted!",
+              // text: `${name} has been deleted.`,
+              icon: "success",
+            });
           }
-      });
-  }
-
-
-
-
-
-
-
+        });
+      }
+    });
+  };
 
   return (
     <div
@@ -82,10 +71,16 @@ console.log(open)
           </div>
 
           <div className="card-actions">
-                       
-                        <button onClick={onOpenModal} className="btn btn-ghost">Update</button>
-                    </div>
-          <button onClick={()=>handleDelete(_id)} className="btn btn-secondary">Delete</button>
+            <button onClick={onOpenModal} className="btn btn-primary">
+              Update
+            </button>
+          </div>
+          <button
+            onClick={() => handleDelete(_id)}
+            className="btn btn-secondary"
+          >
+            Delete
+          </button>
         </div>
         <Modal open={open} onClose={onCloseModal} center>
           <UpdateTask task={task} />
