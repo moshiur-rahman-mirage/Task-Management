@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Link, NavLink, useLocation, useNavigation } from "react-router-dom";
+import { Link, NavLink, useLocation, useNavigate, useNavigation } from "react-router-dom";
 import { motion } from "framer-motion";
 import { AuthContext } from "../providers/Authprovider";
 const navitems = ["Home", "About", "Contact"];
@@ -49,6 +49,9 @@ const Navbar = () => {
   const { user, logout } = useContext(AuthContext);
   const [scrolling, setScrolling] = useState(false);
   const location = useLocation();
+
+
+    const navigate=useNavigate();
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 150) {
@@ -69,6 +72,7 @@ const Navbar = () => {
 
   const handleSignOut = () => {
     logout().then().catch();
+    navigate(location?.state ? location.state : '/');
   };
   return (
     <motion.div
