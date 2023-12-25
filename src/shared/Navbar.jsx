@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { Link, NavLink, useLocation, useNavigation } from "react-router-dom";
 import { motion } from "framer-motion";
 import { AuthContext } from "../providers/Authprovider";
-const navitems = ["Home", "MyTask", "About"];
+const navitems = ["Home"];
 
 const divVariants = {
   rest: {
@@ -24,7 +24,7 @@ const MenuButton = ({ item, className = "" }) => {
     <>
       <motion.div
         variants={divVariants}
-        whileHover={{ backgroundColor: "#EBE2F6" ,borderRadius: "10px" }}
+        whileHover={{ backgroundColor: "#EBE2F6", borderRadius: "10px" }}
         whileTap="rest"
         style={{
           position: "relative",
@@ -37,7 +37,7 @@ const MenuButton = ({ item, className = "" }) => {
         initial="rest"
       >
         <NavLink
-          className={`${className} rounded-lg gap-4 md:mx-5 text-dark md:text-xl text-xs text-left uppercase`}
+          className={`${className} rounded-lg gap-4 md:mx-5 text-white md:text-xl text-xs text-left uppercase`}
           to={`${item}`}
         >
           {item}
@@ -74,23 +74,24 @@ const Navbar = () => {
   };
   return (
     <motion.div
-      className="navbar px-10"
-      initial={{ backgroundColor: "#303956" }}
+      className="navbar px-10 fixed z-10"
+      initial={{ backgroundColor: "transparent" }}
       animate={{
-        // backgroundColor: scrolling ? '#303031' : 'transparent' ,
         backgroundColor: scrolling
-          ? "#FFFFFF"
+          ? "#303031"
           : isHomePage
-          ? "#FFFFFF"
-          : "#FFFFFF",
+          ? "transparent"
+          : "#303031",
         color: scrolling ? "#fff" : "#fff",
       }}
       transition={{ duration: 0.5 }}
     >
-      <div className="navbar-start">
-      <MenuButton className="text-md uppercase hidden lg:flex " item="Task Management"></MenuButton>
+      <div className="navbar-start my-[-90px] ">
+        <MenuButton
+          className="text-md uppercase hidden lg:flex "
+          item="Task Management"
+        ></MenuButton>
         <div className="hidden md:flex">
-       
           <ul className="menu menu-horizontal w-full px-1">
             {navitems.map((item) => {
               return (
@@ -139,9 +140,11 @@ const Navbar = () => {
               );
             })}
           </ul>
-
         </div>
-        <MenuButton className="text-xl uppercase lg:hidden" item="Tasker"></MenuButton>
+        <MenuButton
+          className="text-xl uppercase lg:hidden"
+          item="Tasker"
+        ></MenuButton>
       </div>
       {/* <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal w-full px-1">
@@ -172,14 +175,17 @@ const Navbar = () => {
               tabIndex={0}
               className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-[#303956] rounded-box w-52"
             >
-              <li>
-                <a>Settings</a>
-              </li>
-              <li>
-                <button onClick={handleSignOut} className=" text-white">
+              <NavLink
+                className="rounded-lg text-white  text-xs text-left uppercase"
+                to="/Dashboard"
+              >
+                My Task
+              </NavLink>
+              <div>
+                <button onClick={handleSignOut}  className="rounded-lg   text-white  text-xs text-left uppercase">
                   Logout
                 </button>
-              </li>
+              </div>
               {/* </li> */}
             </ul>
           </div>
